@@ -89,62 +89,67 @@ export default function EventManagementSystem() {
             Create Event
           </button>
         </div>
-        <div className="text-white min-h-screen">
-          <h3 className="font-bold text-xl">Events</h3>
+        <div className="text-white min-h-screen mx-10">
+          <hr />
+          <h3 className="font-bold text-4xl text-gray-300 mb-5">Events</h3>
           <div className="flex-wrap gap-4 grid grid-cols-3">
-            {events.map((event) => (
-              <div
-                key={event.id}
-                className=" p-5 rounded bg-white text-red-700 text-xl font-bold border mt-2"
-              >
-                <h4 className="text-lg">
-                  Event Title:{" "}
-                  <span className="text-lg text-black font-semibold">
-                    {event.title}
-                  </span>
-                </h4>
-                <p className="text-semibold text-ray-400">
-                  Event Description:{" "}
-                  <span className="text-lg text-black font-semibold">
-                    {event.description}
-                  </span>
-                </p>
-                <p className="">
-                  Date:{" "}
-                  <span className="text-lg text-black font-semibold">
-                    {event.date}
-                  </span>
-                </p>
-                <p>
-                  Location:{" "}
-                  <span className="text-lg text-black font-semibold">
-                    {event.location}
-                  </span>
-                </p>
-                <p>
-                  Attendees:{" "}
-                  <span className="text-lg text-black font-semibold">
-                    {event.attendees.length}
-                  </span>
-                </p>
-                <div className="flex justify-between items-center">
-                  <button
-                    onClick={() => {
-                      handleRegister(event.id);
-                    }}
-                    className="text-xl text-white font-semibold bg-blue-600 py-1 px-5 rounded"
-                  >
-                    Register
-                  </button>
-                  <button
-                    onClick={() => deleteEvent(event.id)}
-                    className="text-xl text-white font-semibold bg-red-600 py-1 px-5 rounded"
-                  >
-                    Delete
-                  </button>
+            {events.length === 0 ? (
+              <div className="text-lg text-gray-500">No events available</div>
+            ) : (
+              events.map((event) => (
+                <div
+                  key={event.id}
+                  className=" p-5 rounded bg-white text-red-700 text-xl font-bold border mt-2"
+                >
+                  <h4 className="text-lg">
+                    Event Title:{" "}
+                    <span className="text-lg text-black font-semibold">
+                      {event.title}
+                    </span>
+                  </h4>
+                  <p className="text-semibold text-ray-400">
+                    Event Description:{" "}
+                    <span className="text-lg text-black font-semibold">
+                      {event.description}
+                    </span>
+                  </p>
+                  <p className="">
+                    Date:{" "}
+                    <span className="text-lg text-black font-semibold">
+                      {event.date}
+                    </span>
+                  </p>
+                  <p>
+                    Location:{" "}
+                    <span className="text-lg text-black font-semibold">
+                      {event.location}
+                    </span>
+                  </p>
+                  <p>
+                    Attendees:{" "}
+                    <span className="text-lg text-black font-semibold">
+                      {event.attendees.length}
+                    </span>
+                  </p>
+                  <div className="flex justify-between items-center">
+                    <button
+                      onClick={() => {
+                        handleRegister(event.id);
+                      }}
+                      className="text-xl text-white font-semibold bg-blue-600 py-1 px-5 rounded"
+                    >
+                      Register
+                    </button>
+                    <button
+                      onClick={() => deleteEvent(event.id)}
+                      className="text-xl text-white font-semibold bg-red-600 py-1 px-5 rounded"
+                    >
+                      Delete
+                    </button>
+                  </div>
                 </div>
-              </div>
-            ))}
+              ))
+            )}
           </div>
         </div>
       </div>
